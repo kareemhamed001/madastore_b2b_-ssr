@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --mada-primary: #068ae8;
+  --mada-primary-hover: #0577c6;
+  --mada-dark: #242424;
+  --mada-bg: #fdfdfd;
+  --mada-surface: #ffffff;
+  --mada-soft: #f6f6f6;
+  --mada-border: #e5e5e5;
+  --mada-muted: #6b6b6b;
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--mada-bg);
+    color: var(--mada-dark);
+  }
+}
+
+@keyframes mada_loader_slide {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(95%);
+  }
+
+  100% {
+    transform: translateX(340%);
+  }
+}
+
+.mada-loader-fade-enter-active,
+.mada-loader-fade-leave-active {
+  transition: opacity 180ms ease;
+}
+
+.mada-loader-fade-enter-from,
+.mada-loader-fade-leave-to {
+  opacity: 0;
+}
+
+@keyframes mada_marquee_scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.mada-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.mada-marquee-segment {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.mada-marquee-track-ltr {
+  animation: mada_marquee_scroll 30s linear infinite;
+}
+
+.mada-marquee-track-rtl {
+  animation: mada_marquee_scroll 30s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mada-marquee-track-ltr,
+  .mada-marquee-track-rtl {
+    animation: none;
+  }
+}
